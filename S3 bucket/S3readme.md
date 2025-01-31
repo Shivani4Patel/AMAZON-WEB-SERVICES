@@ -128,4 +128,126 @@
 
 ---
 
-### ✅ **Amazon S3 is a scalable, secure, and cost-effective cloud storage solution suitable for various applications!**
+
+
+# AWS S3 Storage Classes and Lifecycle Policies
+
+## Storage Classes
+
+1. **Standard:**
+   - High availability and durability
+   - Ideal for frequently accessed data
+
+2. **Standard-IA (Infrequent Access):**
+   - Lower cost than Standard
+   - Higher retrieval cost
+   - Good for data accessed less frequently
+   - Example transition: Move from Standard to Standard-IA after 30 days
+
+3. **Intelligent-Tiering:**
+   - Automatically shifts data between frequent and infrequent access tiers
+   - No specific transition days; managed automatically based on access patterns
+
+4. **One Zone-IA:**
+   - Lower cost than Standard-IA
+   - Stores data in a single Availability Zone
+   - Suitable for recreatable infrequently accessed data
+   - Example transition: Move from Standard to One Zone-IA after 30 days
+
+5. **Glacier:**
+   - Very low-cost storage for data archiving
+   - Retrieval times vary from minutes to hours
+   - Best for rarely accessed data
+
+## Cross-Origin Resource Sharing (CORS)
+- **Cross-Origin Resource Sharing (CORS):**
+  - Allows resources from one region to be accessible from another
+  - Configure CORS rules on S3 buckets to enable cross-origin requests
+
+## S3 Event Notifications
+- **S3 EventBridge:**
+  - Enables the triggering of automated responses to S3 events (e.g., object created, deleted)
+  - Useful for automating workflows and integrating with other AWS services
+
+## CloudFront and Content Delivery Network (CDN)
+- **CloudFront:**
+  - A CDN service to deliver data, videos, applications, and APIs to customers globally with low latency
+  - Uses edge locations to cache content closer to users
+  - Example: Set up CloudFront distribution with an S3 bucket as the origin
+
+- **CloudFront Distribution:**
+  - Configuring CloudFront to distribute content
+  - Enhances performance and reduces latency
+
+## Scalability and High Availability
+- **Scalability:**
+  - AWS services, including S3 and CloudFront, scale automatically to handle increased load
+
+- **High Availability:**
+  - Multi-AZ deployments ensure high availability and data durability
+
+## Additional Concepts
+- **Alias Records:**
+  - Use alias records in Route 53 to point to CloudFront distributions for domain names
+
+- **Replication:**
+  - S3 Cross-Region Replication (CRR) can replicate objects across different AWS regions to enhance data availability and disaster recovery
+
+## Example Use Cases
+- **Lifecycle Policies:**
+  - Use lifecycle policies to automatically transition objects between storage classes (e.g., from Standard to Glacier after a set period)
+
+- **CDN with CloudFront:**
+  - Improve content delivery speed globally by using CloudFront to cache and serve content from edge locations
+
+---
+
+# S3 Static Website Hosting
+
+Here, we demonstrate how to host a static website in an S3 bucket.
+
+### Steps:
+1. **Create a bucket** and attach the necessary policies.
+2. **Upload the necessary objects** into the bucket.
+3. **Enable static website hosting:**
+   - Under the **Properties** section, select **Static Website Hosting**.
+   - Click on **Edit**, enable the option, and specify the website path (e.g., `index.html`).
+
+### Screenshots:
+![Create Bucket](https://github.com/user-attachments/assets/9e4ed555-11ff-4f75-8a75-222dc6dbf281)
+![Upload Objects](https://github.com/user-attachments/assets/d46781c9-9d33-44ee-ba64-6054c60e13a9)
+![Attach Policy](https://github.com/user-attachments/assets/b61ae216-282d-4446-b5d9-c07e9fcd2c91)
+![Enable Static Website](https://github.com/user-attachments/assets/fb9c9a7d-09bf-4a54-9327-9d4e3940afae)
+![Static Website Path](https://github.com/user-attachments/assets/3f541b6d-d692-4aa6-9d96-c7ddad0b8ccc)
+![Website Link](https://github.com/user-attachments/assets/106adb90-af21-416a-a7ed-3328683f43a5)
+![Access Website](https://github.com/user-attachments/assets/16cc35f6-b356-49f6-bfc2-562839ce2e4d)
+![Final Webpage](https://github.com/user-attachments/assets/b42e29da-44a1-4979-b686-2f63805d12b7)
+
+Once completed, you will receive a website link, which can be copied and pasted into a browser to access your webpage.
+
+---
+
+# CloudFront Distribution as S3 Origin
+
+### Steps:
+1. **Go to AWS Services** and select **CloudFront Distributions**.
+2. **Select an Origin** (S3 Bucket).
+3. **Enable public access** and choose HTTP & HTTPS.
+4. **Disable security protections** (optional for testing).
+5. **Complete distribution creation**.
+6. **Copy the DNS name** and paste it into a browser to access the webpage via CloudFront.
+
+### Screenshots:
+![Select CloudFront](https://github.com/user-attachments/assets/8c2cdcb1-33c5-461e-a6b8-c740c594086b)
+![Choose Origin](https://github.com/user-attachments/assets/f951938b-d7d0-4324-8c5c-2eac62d2957f)
+![Configure Public Access](https://github.com/user-attachments/assets/1963cf18-3456-4d3a-bda2-0159b3920151)
+![HTTP & HTTPS](https://github.com/user-attachments/assets/3255f00a-b7c5-4754-9f84-b6dac59486e3)
+![Disable Security](https://github.com/user-attachments/assets/6d4405cf-f30b-42bf-91d1-4014d4da0a1e)
+![CloudFront Created](https://github.com/user-attachments/assets/b6e492ea-1d67-4d8e-8b3e-10e36463342a)
+![CloudFront Dashboard](https://github.com/user-attachments/assets/3486749e-63cf-49a1-bcef-7b3b58eb3c2f)
+![CloudFront Access](https://github.com/user-attachments/assets/58437f1f-380e-4d12-bbe0-79b378b90603)
+![Final CloudFront Page](https://github.com/user-attachments/assets/7f6dc918-9675-48d9-bd77-be12bfa8a7a3)
+![Index.html Access](https://github.com/user-attachments/assets/2465ac3b-e12a-4e54-9abb-5ef46da1b1b0)
+
+Using **CloudFront**, the webpage can be accessed globally with improved speed and reliability.
+
