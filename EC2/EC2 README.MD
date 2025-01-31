@@ -1,4 +1,4 @@
-# **Launching EC2 Instances and Exploring AWS EC2 Dashboard**
+# **Basics of EC2 instance and Launching EC2 Instance**
 
 ---
 
@@ -11,6 +11,7 @@
   - [Using PuTTY](#using-putty)
 - [Exploring AWS EC2 Dashboard](#exploring-aws-ec2-dashboard)
 - [AWS Protocols](#aws-protocols)
+-  EC2 Instance Setup and Security Group Configuration
 
 ---
 
