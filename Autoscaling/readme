@@ -1,0 +1,98 @@
+Table of Contents
+AUTOSCALING	2
+CREATE AUTOSCALING GROUP	3
+CREATE AMI USING AMI LAUNCH INSTANCE	17
+
+ 
+AUTOSCALING 
+
+An autoscaling application is a system that automatically adjusts the number of instances (servers) running your application based on demand. Here's how it works:
+
+Auto Scaling Groups: These are collections of EC2 instances managed by the autoscaling system.
+Minimum and Maximum Capacity: You set limits on the number of instances allowed in each group. The system ensures it never falls below the minimum or exceeds the maximum.
+Vertical Scaling: Upgrading the hardware of existing instances.
+Horizontal Scaling: Creating or removing identical instances.
+Desired Capacity: You can also specify how many instances you want to maintain at all times.
+Scaling Policies: These policies dictate when the system should add or remove instances based on demand.
+
+Types of Scaling Policies:
+
+Target-based: Keeping a certain metric (like CPU usage) at a specific level. CPU to stay around 40%
+Simple: Triggering scaling based on a simple condition (like CPU exceeding a threshold). CPU to stay around 40%
+Step: Adding or removing instances in predefined steps based on metrics.increse minimum capacity to 6 at 1 Am on Monday
+
+In simpler terms, an autoscaling application automatically adjusts the number of servers you're using based on how much demand there is. If more people start using your app, it adds more servers; if fewer people are using it, it removes servers to save costs.
+
+
+
+
+
+CREATE AUTOSCALING GROUP 
+To create an auto-scaling group in AWS EC2, navigate to the Auto Scaling Groups section, then click "Create Auto Scaling group." If a launch template isn't available, create one by specifying configurations similar to launching a new EC2 instance. Include user data in the Advanced details section to install an Apache web server with a basic webpage on the EC2 instance. After configuring, click "Create launch template" to finalize. This establishes the necessary infrastructure for auto-scaling based on defined parameters and configurations.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+To set up the auto-scaling group, first, choose a name here I chose she  Next, select all available zones for maximum availability, set the health check grace period to 300 seconds, and specify the desired capacity as 3 instances with a minimum of 1 and a maximum of 3. Enable instance scale-in protection to prevent new instances from being terminated. Skip notifications and tags, then review and create the auto-scaling group. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The first auto-scaling group is now successfully created.
+
+ 
+Now, we observe three running instances launched through the auto-scaling group. Checking one instance's public IP, we confirm the webpage is accessible. Termination of an instance is followed by its automatic replacement, maintaining the desired three-instance state. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+the webpage still runs on the other ec2 instance 
+ 
+now will delete the autoscaling group and our instances will automatically be terminate.
+ 
+ 
+
+
+
+
+
+
+
+CREATE AMI USING AMI LAUNCH INSTANCE
+To generate an AMI, choose an instance, navigate to actions, and select "create image." Provide a name for the image, ensure "enable no reboot" is checked, then click "Create image." The AMI creation process completes successfully.
+
+ 
+give name and description 
+
+ 
+ 
+ami image has successfully been created.
+ 
+will start with clicking "Launch instance" from the AMI menu. Provide a name and select "My AMIs" from the Application and OS Images section. Under "owned by me," locate the AMI that we previously created.
+
+ 
+ 
+ 
+ 
+ 
+In this scenario, the instance was generated using the AMI image, yet the httpd server wasn't automatically initiated, thus hindering the webpage display. To resolve this, connect to the instance and manually launch the httpd web server to enable webpage visibility.
+ 
+and we can access the webpage finally.
+ 
+
+
+
