@@ -1,5 +1,6 @@
 **Relational database service**
-AWS RDS, which stands for Amazon Web Services Relational Database Service, is a cloud-based service that makes it easy to set up, operate, and scale a relational database. Here’s a simple way to understand it:
+- AWS RDS, which stands for Amazon Web Services Relational Database Service, is a cloud-based service that makes it easy to set up, operate, and scale a relational 
+  database. Here’s a simple way to understand it:
 1.	Managed Databases: AWS RDS handles routine database tasks like backups, software patching, monitoring, and hardware provisioning, so you don't have to.
 2.	Multiple Database Engines: You can choose from several popular database engines like MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server, or Amazon's own Aurora.
 3.	Scalability: It allows you to easily scale your database's compute and storage resources to meet your needs.
